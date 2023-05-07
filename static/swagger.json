@@ -1,0 +1,134 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "app_flask",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Home page",
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        }
+      },
+      "/show/{id}": {
+        "get": {
+          "summary": "Affiche un flux RSS spécifique et ses articles",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        }
+      },
+      "/new": {
+        "get": {
+          "summary": "Formulaire pour ajouter un nouveau flux RSS",
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        },
+        "post": {
+          "summary": "Ajoute un nouveau flux RSS",
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        }
+      },
+      "/edit/{id}": {
+        "get": {
+          "summary": "Formulaire pour éditer un flux RSS existant",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        },
+        "post": {
+          "summary": "Mettre à jour un flux RSS existant",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        }
+      },
+      "/delete/{id}": {
+        "get": {
+          "summary": "Supprime un flux RSS existant",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        }
+      },
+      "/upload": {
+        "get": {
+          "summary": "Formulaire pour importer des flux RSS à partir d'un fichier JSON",
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        },
+        "post": {
+          "summary": "Importer des flux RSS à partir d'un fichier JSON",
+          "responses": {
+            "200": {
+              "description": "Succès"
+            }
+          }
+        }
+      }
+    }
+  }
+  

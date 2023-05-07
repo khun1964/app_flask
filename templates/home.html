@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block title %}Home{% endblock%}
+
+{% block content %}
+   <div class="container-fluid">
+    <h3 class="text-center col-md-7 mx-auto bg-primary text-white shadow-lg my-5" >FEED LIST</h6>
+        <div class="row justify-content-sm-center">
+        {%for d in feeds%}
+        <div class="container card col-md-3 m-1 text-center rounded shadow-lg">
+            <img class="card-img-top img-fluid p-1" style="max-width: 150px;" src="{{d.image}}" alt="Card image cap">
+            <div class="card-body text-center">
+              <h5 class="card-title text-justify text-center">{{d.name}}</h5>
+              <p class="card-text">Rss feed link's: {{d.url}}</p>
+              <div class="row justify-content-sm-center">
+                <a href="/edit/{{d.id}}" class="btn btn-warning m-1 p-1 text-center"><i class="fa-solid fa-pen"></i></a>
+                <a href="/show/{{d.id}}" class="btn btn-info m-1 p-1 text-center"><i class="fa-solid fa-eye"></i></a>
+                 <a href="/delete/{{d.id}}" class="btn btn-danger m-1 p-1 text-center"><i class="fa-solid fa-trash"></i></a> 
+              </div>
+            </div>
+          </div> 
+        {%endfor%}    
+    </div>
+{% endblock%}
+
+

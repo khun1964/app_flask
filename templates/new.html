@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}New{% endblock%}
+
+{% block content %}
+    <h3 class="text-center bg-primary text-white p-30 mx-auto my-3 col-md-7 shadow-lg" >New article</h6>
+    <form method="POST">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" {% if feed %} value="{{ feed.name }}" {% endif %}>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="image" class="form-label">Thumbnail <i class="text-muted fst-italic "> url's picture</i></label>
+                <input type="text" class="form-control" id="image" name="image"  {% if feed %} value="{{ feed.image }}"  {% endif %}>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="url" class="form-label">Article's URL</label>
+            <input type="text" class="form-control" id="url" name="url"  {% if feed %} value="{{ feed.url }}" {% endif %} >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock%}

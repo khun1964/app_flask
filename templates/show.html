@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{  feed.name }}{% endblock%}
+
+{% block content %}
+
+
+<div class="container">
+  {% if feed %}
+    <h1 class="text-center bg-primary text-white col-md-7 mx-auto my-3"> FEED: {{ feed.name }}</h1>
+    <div class="card mx-auto my-3" style="width: 18rem;">
+        <img src="{{feed.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">{{feed.name}}</h3>
+          <p class="card-text">Website's URL: {{feed.url}}</p>
+          <a href="{{feed.url}}" target="blank" class="btn btn-primary">Go to site</a>
+        </div>
+      </div>
+
+      <div class="col-md-8 text-center mx-auto">
+        <h4 class="text-center my-3">Articles:</h4>
+    
+        {% for a in articles %}
+        <p class="text-center">
+            {{a.title}}
+            <br>
+            <a class="text-primary nav-item" href="{{ a.link }}">Go there</a>
+        </p>
+        <hr>
+        {% endfor %}
+
+      </div>
+      {% else %}
+      <h1 class="text-center text-danger fst-italic">Aucun article corespondant... <a class="text-primary" href="/home">back to feed list</a></h1>
+{% endif %}
+</div>
+
+{% endblock %} 
