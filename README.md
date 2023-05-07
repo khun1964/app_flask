@@ -60,8 +60,8 @@ def delete(id):
 
 Pour installer et exécuter l'application :
 1. Installer les dépendances en exécutant la commande `pip install -r requirements.txt`
-2. Modifier la clé secrète dans le fichier `app.py`
-3. Exécuter l'application avec la commande `python app.py`
+2. Modifier la clé secrète dans le fichier `main.py`
+3. Exécuter l'application avec la commande `flask run --app main`
 
 ## Auteurs
-Réalisé par hf-dev78
+poei Dev칠ops
