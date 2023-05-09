@@ -60,10 +60,9 @@ def delete(id):
 
 Pour installer et exécuter l'application :*
 1. Installer Python sur votre environnement de travail
-2. Exécuter la commande `python -m pip install --upgrade` pour mettre à jour vos packages python
-3. Installer les dépendances en exécutant la commande `pip install -r requirements.txt`
-4. Exécuter l'application avec la commande `flask run --app main`
-5. Rendez-vous sur à l'adresse locale 127.0.0.1:5000
+2. Installer les dépendances en exécutant la commande `pip install -r requirements.txt`
+3. Exécuter l'application avec la commande `flask --app main run`
+4. Rendez-vous sur à l'adresse locale 127.0.0.1:5000
 
 ## Auteurs
 poei Dev칠ops
