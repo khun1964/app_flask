@@ -22,7 +22,7 @@ jobs:
       run: pip install -r requirements.txt
     - name: Build coverage file
       run: |
-        pytest --cache-clear --cov=app --cov-report xml test/
+        pytest --cache-clear --cov=app --cov-report xml tests/
     - name: Comment coverage
       uses: highspeedoffice/pytest-cov-xml-parser@v1
 
