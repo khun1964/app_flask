@@ -18,21 +18,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-    - name: Analysing the code with pylint
-      # See https://stackoverflow.com/q/71086285
-      run: |
-        PYLINT_OUTPUT=$(pylint $(git ls-files '*.py')  --exit-zero)
-    - name: Post result to PR
-      uses: mshick/add-pr-comment@v1
+
+    - uses: marian-code/python-lint-annotate@v3
       with:
-        message: ${{ env.PYLINT_OUTPUT }}
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-        allow-repeats: false # This is the default
-
-
-
-
-
-
-
+        python-root-list: "*.py"
+        use-pylint: true  
+        python-version: "3.10"  
