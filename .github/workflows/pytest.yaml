@@ -21,8 +21,4 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Build coverage file
       run: |
-          pytest --cache-clear --cov=tests --cov-report xml tests/
-    - name: Comment coverage
-      uses: MishaKav/pytest-coverage-comment@main
-      with:
-        pytest-coverage-path: ./pytest-coverage.txt
+          pytest --cache-clear --cov=tests --cov-report=html:coverage_re tests/
