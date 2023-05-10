@@ -16,14 +16,13 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install pytest coverage 
-    - name: Install requirements
-      run: pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install flake8 pytest pytest-cov
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Build coverage file
       run: |
-        pytest --cache-clear --cov=app --cov-report xml tests/
+          pytest --cache-clear --cov=tests --cov-report xml tests/
     - name: Comment coverage
-      uses: highspeedoffice/pytest-cov-xml-parser@v1
-
-
+      uses: MishaKav/pytest-coverage-comment@main
+      with:
+        pytest-coverage-path: ./pytest-coverage.txt
