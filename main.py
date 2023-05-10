@@ -32,7 +32,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
         'app_name': "app_flask"
     }
 )
-  
+
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
     
 
@@ -95,8 +95,8 @@ def show(id):
     if int(id):
         return render_template('show.html', feed=feed, articles=articles)
     else:
-       flash('Unknown feed or articles', 'error')
-       return redirect(url_for('home')) 
+        flash('Unknown feed or articles', 'error')
+        return redirect(url_for('home')) 
 
 @app.route('/new', methods=['POST', 'GET'])
 def add_feed():
