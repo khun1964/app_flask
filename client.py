@@ -22,7 +22,7 @@ def show(id):
     return render_template('show.html', feed=feed,  articles=articles)
         
 def get_data(path):
-    url = f"http://localhost:5001/{path}"
+    url = f"http://load_balancer/{path}"
     r = requests.get(url)
   
     if r.status_code == 200:

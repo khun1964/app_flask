@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - 5000:5000
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - 5002:5000
+  server2:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - 5003:5000
+  server3:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - 5004:5000         
+  load_balancer:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 80:80
+    depends_on:
+      - server
+      - server2
+      - server3
