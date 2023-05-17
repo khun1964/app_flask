@@ -2,8 +2,7 @@ import os
 import json
 import feedparser
 from datetime import datetime
-from flask import Flask, render_template, flash, redirect, url_for, request
-import requests
+from flask import Flask, render_template, request, flash, redirect, url_for, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_swagger_ui import get_swaggerui_blueprint
 
@@ -61,21 +60,35 @@ Méthodes:
     name = db.Column(db.String(80), nullable=False)
     url = db.Column(db.String(255), nullable=False)
     image = db.Column(db.String(255))
-
+    
+    def __init__(self, id, name, url, image):
+        self.id = id
+        self.name = name
+        self.url = url
+        self.image = image
+        
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}    
+        
     def __repr__(self):
         return f'<RssFeed {self.id}: {self.name}>'
 
-@app.route('/feed')
-def home():
-    """
-    Fonction home() qui récupère tous les flux RSS de la base de données et les affiche sur la page d'accueil.
-
-    Returns:
-        str: Rendu du template 'home.html' avec la liste de tous les flux RSS.
-    """
-    
+@app.route('/feeds')
+def get_all_feeds():
     feeds = RssFeed.query.all()
-    return render_template('home.html', feeds=feeds)
+    response = [f.as_dict() for f in feeds]
+    return response
+
+@app.route('/feeds/<int:id>', methods=['GET'])
+def get_one_feed(id):
+    feed = RssFeed.query.get(id)
+    articles = fetch_feed(feed.url)
+    return jsonify(articles)
+
+@app.route('/feeds/<int:id>/metadata', methods=['GET'])
+def get_feed_metadata(id):
+    feed = RssFeed.query.get(id)
+    return feed.as_dict()
 
 @app.route('/show/<int:id>', methods=['GET'])
 def show(id):
