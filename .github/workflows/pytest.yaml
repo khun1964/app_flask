@@ -3,21 +3,39 @@ on:
   pull_request:
     branches: [main, master]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: [3.6, 3.7, 3.8, 3.9, 3,10, 3,11]
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-          pip install pytest pytest-cov
-          pip install -r requirements.txt
-    - name: Build coverage file
-      run: |
-          pytest --cache-clear --cov=tests --cov-report=html:coverage_re tests/
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pytest and generate coverage report
+        run: |
+          pytest --cov-report term --cov-report xml --cov=./test
+          coverage xml -o coverage.xml
+          coverage report --show-missing > coverage.txt
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report-${{ matrix.python-version }}
+          path: coverage.xml
+
+      - name: Upload coverage text file
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-text-${{ matrix.python-version }}
+          path: coverage.txt
