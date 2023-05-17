@@ -27,7 +27,7 @@ jobs:
 
       - name: Run pytest and generate coverage report
         run: |
-          python -m pytest --cov-report term --cov-report xml --cov= /tests
+          python -m pytest --cov-report term --cov-report xml --cov= tests/
           python -m coverage xml -o coverage.xml
           python -m coverage report --show-missing > coverage.txt
 
