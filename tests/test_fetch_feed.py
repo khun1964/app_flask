@@ -15,5 +15,5 @@ def test_working_feed():
     As a consequence, the only valid test is the one getting data from a working feed
     and checking there are feed entries in.
     """
-    feed_entries = main.fetch_feed("https://stackoverflow.com/feeds")
+    feed_entries = server.fetch_feed("https://stackoverflow.com/feeds")
     assert len(feed_entries)>0
