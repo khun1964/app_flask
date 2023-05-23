@@ -1,13 +1,4 @@
-import main, server, client
-import os
-import json
-import feedparser
-import requests
-from datetime import datetime
-from flask import Flask, render_template, request, flash, redirect, url_for, jsonify, make_response
-from flask_sqlalchemy import SQLAlchemy
-from flask_swagger_ui import get_swaggerui_blueprint
-
+import server
 
 def test_working_feed():
     """
