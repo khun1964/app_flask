@@ -26,9 +26,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: pip-${{ python-version }}
+          key: pip-3.10
           restore-keys: |
-                pip-${{ python-version }}
+                pip-3.10
       - name: Build coverage file
         run: |
           pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee pytest-coverage.txt
