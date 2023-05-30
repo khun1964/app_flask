@@ -1,0 +1,17 @@
+name: Get Commit Message on Merge
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+    - name: Show Commit Message
+      if: github.event.pull_request.merged == true
+      run: |
+        echo '${{ github.event.head_commit.message }}'
+
