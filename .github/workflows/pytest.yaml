@@ -28,17 +28,17 @@ jobs:
       - name: Run pytest and generate coverage report
         run: |
           coverage run -m unittest discover
-          coverage xml -o coverage.xml
-          coverage report --show-missing > coverage.txt
+#          coverage xml -o coverage.xml
+#          coverage report --show-missing > coverage.txt
 
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report-${{ matrix.python-version }}
-          path: coverage.xml
+#      - name: Upload coverage report
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: coverage-report-${{ matrix.python-version }}
+#          path: coverage.xml
 
-      - name: Upload coverage text file
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-text-${{ matrix.python-version }}
-          path: coverage.txt
+#      - name: Upload coverage text file
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: coverage-text-${{ matrix.python-version }}
+#          path: coverage.txt
