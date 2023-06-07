@@ -13,8 +13,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fluxrss.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
-#Oui je sais...
-app.secret_key = '07671C8CA4CC9D8A660B9DDD23F0D75C7260ED385A10267074569F1C452B8441'
 
 
 # @app.before_request
